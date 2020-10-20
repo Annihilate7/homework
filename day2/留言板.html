@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>留言板</title>
+</head>
+<body>
+
+<div id="app">
+
+    <!--    实现思路
+        1. 展示留言板
+            a. 将所有的数据绑定为vue的实例
+            b. 遍历vue的留言显示
+        2. 发表留言
+            a. 给发表留言的按钮绑定事件
+            b. 获取用户在输入框所输入的值
+            c. 添加留言板
+
+        3. 删除留言
+            a. 绑定事件
+            b. 通过事件传递确定要删除的行
+            c. 在触发的方法中完成删除
+
+    -->
+
+    <input type="text" v-model="msg">
+    <input type="button" value="发表留言" @click="add_note">
+
+    <ul>
+        <li v-for="(note, index) in notebook" :key="index">
+            <span>{{note}}</span> <input type="button" value="删除" @click="delNote(index)">
+        </li>
+    </ul>
+
+    <span>留言总数量：{{notebook.length}}条</span>
+    <br><br>
+    <input type="button" value="删除所有" v-show="flag" @click="del_all(0, notebook.length)">
+
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            notebook: ["精准与否，就是屠宰和手术的区别", "一板一眼，就会滋生弱点", "逃命只是徒劳", "我要你在哪里，就在哪里", "谎言不会伤人，真相才是快刀", "等待会带来丰厚的奖励", "优雅，永不过时", "为仆则忠，为主则殆，这便是道德"],
+            msg: "",
+            flag: true,
+        },
+        methods: {
+            // 添加留言
+            add_note() {
+                // 判断输入框是否有值  有值则添加
+                let msg = this.msg;
+                if (msg) {
+                    // 默认添加到留言板的末尾
+                    // this.notebook.push(this.msg);
+                    // 添加到留言板的首部
+                    this.notebook.unshift(this.msg);
+                    this.msg = "";
+                    this.flag = true;
+                }
+            },
+
+            // 删除留言
+            delNote(index){
+                console.log(index);
+                // 根据下标取删除某个元素
+                this.notebook.splice(index, 1)  // 参数1: 从哪个下标开始删除  参数2: 删除的元素个数
+                if (!this.notebook.length){
+                    this.flag = false
+                }
+            },
+
+            // 删除所有留言
+            del_all(index, num){
+                this.notebook.splice(index, num) // 从0开始，删除元素的个数为总个数
+                this.flag = ! this.flag;
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

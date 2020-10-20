@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <style>
+        .aa {
+            border: 3px red solid;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h3>{{message}}</h3>
+    <h3>{{number}} * 4 = {{number*4}}</h3>
+    <h3>{{user}}</h3>
+    <h3>{{user.username}}</h3>
+    <h3>{{user.password}}</h3>
+    <h3>{{array[0]}}</h3>
+    <h3>{{users[1]}}</h3>
+    <h3>{{users[1].username}}</h3>
+    <h3>{{users[1].password}}</h3>
+    <h3>{{message.toLocaleUpperCase()}}</h3>
+    <h3 v-text="message">This is Jhin.</h3>
+    <h3>{{message}} This is Jhin.</h3>
+    {{msg}} <br>
+    <span v-html="msg"></span>
+    <h3>年龄：{{age}}&nbsp&nbsp(波哥，永远滴神！)</h3>
+    <input type="button" value="点我老一岁" @click="add_age">
+    <input type="button" value="点我小一岁" @click="low_age">
+    <h3>{{num}}</h3>
+    <input type="button" value="点我改值" @click="change_num(37, '小白', event)">
+    <h3 v-show="true">{{string}}</h3>
+    <h3 v-show="isShow">{{string}}</h3>
+    <input type="button" value="展示" @click="showstr"> <br><br>
+    <span v-show="count>=24">偶想吼冰阔落！</span>
+    <input type="button" value="-" @click="down1">
+    <input type="button" value="+" @click="up1">
+    <h3 v-if="false">吃烤鱼</h3>
+    <h3 v-else-if="true">吃火锅</h3>
+    <h3 v-else>吃海鲜</h3>
+    <img :src="src" :title="title" :class="{aa: showCss}">
+    <input type="button" value="改变图片的样式" @click="addCss">
+    <input type="button" value="切换图片" @click="changeImg"> <br><br>
+    <input type="text" v-model="s">
+    <p>{{s}}</p>
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello world!',
+            number: 7,
+            user: {username: 'Jhin', password: '123456'},
+            array: ['北京', '上海', '广州', '深圳'],
+            users: [{username: 'Jhin', password: '654321'}, {username: 'sword', password: '123456'}],
+            msg: '<a href=\"\">百度一下</a>',
+            age: 18,
+            num: 21,
+            string: '一起来玩儿云顶之弈',
+            isShow: true,
+            count: 24,
+            title: '奇怪的猫咪',
+            showCss: false,
+            src: 'https://ns-strategy.cdn.bcebos.com/ns-strategy/upload/fc_big_pic/part-00701-4006.jpg',
+            flag: true,
+            s: '',
+        },
+        methods: {
+            add_age(){
+                this.age++
+            },
+            low_age(){
+                this.age--
+            },
+            change_num(num, name, event){
+                this.num = num;
+                console.log(name);
+                console.log(event);
+            },
+            showstr(){
+                this.isShow = !this.isShow
+            },
+            down1(){
+                this.count--
+            },
+            up1(){
+                this.count++
+            },
+            addCss() {
+                this.showCss = !this.showCss;
+            },
+            changeImg() {
+                if (this.flag){
+                    this.src = "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=4064879582,1187753480&fm=11&gp=0.jpg"
+                }
+                else {
+                    this.src = "https://ns-strategy.cdn.bcebos.com/ns-strategy/upload/fc_big_pic/part-00701-4006.jpg"
+                }
+                this.flag = !this.flag
+            },
+        },
+    })
+</script>
+</body>
+</html>
