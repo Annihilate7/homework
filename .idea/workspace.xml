@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a81bc043-8d03-4de7-9a7a-4ae483ebc3ad" name="Default Changelist" comment="" />
+    <list default="true" id="a81bc043-8d03-4de7-9a7a-4ae483ebc3ad" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day2/留言板.html" beforeDir="false" afterPath="$PROJECT_DIR$/day2/留言板.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +17,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1j8ej0DzhIvCSXPW4rrvZE20jJN" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -41,7 +48,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603190276944</updated>
-      <workItem from="1603190278056" duration="10018000" />
+      <workItem from="1603190278056" duration="10507000" />
+      <workItem from="1603240449267" duration="1289000" />
     </task>
     <servers />
   </component>
