@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>day3_test</title>
+    <style>
+        .red {
+            color: red;
+        }
+
+        .green {
+            color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <span @click="c">{{num}}</span> <br>
+    十位：<span>{{parseInt(num / 10)}}</span> <br>
+    个位：<span>{{num % 10}}</span> <hr>
+
+    <input type="number" v-model="s" max="9" min="0">
+    <input type="number" v-model="g" max="9" min="0">
+    <span> = {{s * 10 + +g}}</span> <br>
+    结果为：<b>{{result}}</b> <hr>
+
+    <span @click="c">{{num}}</span> <br>
+    十位：<span>{{s}}</span> <br>
+    个位：<span>{{g}}</span> <hr>
+
+    姓：<input type="text" v-model="first_name"> <br>
+    名：<input type="text" v-model="last_name"> <br>
+    <p>姓名：{{fullName}}</p> <hr>
+
+    姓名：<input type="text" v-model="name"> <br>
+    <p>姓：{{firstName}}</p>
+    <p>名：{{lastName}}</p> <hr>
+
+    <span id="span">{{n}}</span>
+    <h3 @click="change" id="sp">{{n}}</h3> <hr>
+
+    <com></com>
+    <span @click="clickMe">这是Vue的numbers: {{numbers}}</span> <hr>
+
+    <cue css="red" user="1"></cue>
+    <cue css="green" user="2"></cue> <hr>
+
+    <input type="text" v-model="username"> <br>
+    父组件值为：{{username}} <br>
+    <app7 :test="username"></app7> <hr>
+
+    这是父组件的值：{{password}} <br>
+    <app8 @no="solo1"></app8>
+
+</div>
+<script src="../js/vue.min.js"></script>
+<script>
+    function app0(a, b) {
+        console.log(a + b);
+    }
+    app0(1, 2)
+
+    let app1 = function (a, b) {
+        console.log(a + b);
+    }
+    app1(2, 3)
+
+    let app2 = (a, b, c) => console.log(a + b + c)
+    app2(3, 4, 5)
+
+    let app3 = function (a, b) {
+        console.log(a * b);
+        console.log(a - b);
+    }
+    app3(5, 6)
+
+    let app4 = a => console.log(a * 10)
+    app4(6)
+
+    let app5 = a => a + 2
+    let sum = app5(7)
+    console.log(sum)
+
+    let app6 = () => console.log('Hello Vue!')
+    app6()
+
+    let user1 = {
+        username: 'Jhin',
+        app: function () {
+            console.log(this.name);
+        },
+    }
+    user1.app()
+
+    let user2 = {
+        username: 'Annihilate7',
+        app: function () {
+            setTimeout(function () {
+                console.log(this.username)
+            });
+        },
+    }
+    user2.app()
+
+    let user3 = {
+        username: 'Kayn',
+        app: function () {
+            setTimeout(() => {
+                console.log(this.username)
+            });
+        },
+    }
+    user3.app()
+
+    let com = {
+        template: `
+            <div>这是一个组件
+            <butten @click="click_me">点我</butten>
+            <div>这是被嵌套的div，{{numbers}}</div>
+            </div>
+        `,
+        methods: {
+            click_me() {
+                this.numbers--;
+            },
+        },
+        data: function () {
+            return {
+                numbers: 80,
+            }
+        },
+    }
+
+    // Vue.component("com", com)
+
+    let cue = {
+        template: `
+            <div>
+                <div :class="css">
+                    这是我的组件
+                </div>
+            </div>>
+        `,
+        props: ['css', 'user'],
+        created() {
+            console.log(this.user)
+        }
+    }
+
+    let app7 = {
+        template: `
+            <div>
+              传递给子组件的值为：{{test}}
+            </div>
+        `,
+        props: ['test'],
+    }
+
+    let app8 = {
+        template: `
+            <div>
+                <button @click="solo2">点击</button>
+            </div>
+        `,
+        methods: {
+            solo2() {
+                this.$emit('no', '不，才刚刚开始！');
+            },
+        }
+    }
+
+    new Vue({
+        el: "#app",
+        data: {
+            num: 34,
+            s: '',
+            g: '',
+            first_name: '',
+            last_name: '',
+            name: '',
+            firstName: '',
+            lastName: '',
+            n: 7,
+            numbers: 24,
+            username: '',
+            password: '结束了！',
+        },
+        components: {
+            'com': com,
+            'cue': cue,
+            'app7': app7,
+            'app8': app8,
+        },
+        methods: {
+            c() {
+                this.num--;
+            },
+            change() {
+                this.number--;
+            },
+            clickMe() {
+                this.numbers++;
+            },
+            solo1(password) {
+                this.password = password;
+            },
+        },
+        computed: {
+            result() {
+                return this.s * 10 + +this.g;
+            },
+            fullName() {
+                return this.first_name + this.last_name
+            },
+        },
+        watch: {
+            num() {
+                this.s = parseInt(this.num / 10);
+                this.g = (this.num % 10);
+            },
+            name() {
+                let name = this.name.split(' ');
+                this.firstName = name[0];
+                this.lastName = name[1];
+            },
+        },
+
+        // beforeCreate() {
+        //     console.log('beforeCreate' + this.n);
+        // },
+        // created() {
+        //     console.log('create' + this.n);
+        // },
+        // beforeMount() {
+        //     console.log('beforeMount：' + document.getElementById('span').innerText);
+        // },
+        // mounted() {
+        //     console.log('mounted：' + document.getElementById('span').innerText);
+        // },
+        // beforeUpdate() {
+        //     console.log('beforeUpdate' + this.n);
+        //     console.log('beforeUpdate' + document.getElementById('sp').innerText);
+        // },
+        // updated() {
+        //     console.log('update：' + this.n);
+        //     console.log('update：' + document.getElementById('sp').innerText);
+        // },
+        // beforeDestroy() {
+        //
+        // },
+        // destroyed() {
+        //
+        // },
+    })
+</script>
+</body>
+</html>
