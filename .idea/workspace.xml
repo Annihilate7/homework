@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a81bc043-8d03-4de7-9a7a-4ae483ebc3ad" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/day2/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/day2/test.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +29,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../classcode" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -51,7 +50,8 @@
       <workItem from="1603190278056" duration="10507000" />
       <workItem from="1603240449267" duration="2160000" />
       <workItem from="1603269338261" duration="229000" />
-      <workItem from="1603269709840" duration="12375000" />
+      <workItem from="1603269709840" duration="13194000" />
+      <workItem from="1603346388787" duration="8763000" />
     </task>
     <servers />
   </component>
@@ -71,9 +71,9 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="189" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1603281810407" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1603280640049">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1603346422075">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1603280640049" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1603346422075" />
   </component>
 </project>

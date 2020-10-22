@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>day4_test</title>
+</head>
+<body>
+<div id="app">
+<!--    <h3>欢迎使用</h3>-->
+<!--    <router-link to="/one">one</router-link>-->
+<!--    <router-link to="/two">two</router-link>-->
+<!--    <router-link to="/index">首页</router-link>-->
+<!--    <router-link to="/user">用户界面</router-link>-->
+<!--    <hr>-->
+    <router-view></router-view>
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+<script>
+    // let one = {
+    //     template: `
+    //         <div>
+    //             这是第一个组件
+    //         </div>
+    //     `
+    // }
+    // let two = {
+    //     template: `
+    //         <div>
+    //             这是第二个组件
+    //         </div>
+    //     `
+    // }
+    // let index = {
+    //     template: `
+    //         <div>
+    //         <h4>这是index页面</h4>
+    //         <h3>欢迎访问信息管理系统</h3>
+    //         </div>
+    //     `,
+    // }
+    // let user = {
+    //     template: `
+    //         <div>
+    //         <h3>用户信息表</h3>
+    //         <table border="1">
+    //             <tr>
+    //                 <td>ID</td>
+    //                 <td>姓名</td>
+    //                 <td>生日</td>
+    //                 <td>操作</td>
+    //             </tr>
+    //             <tr v-for="user in users" :key="user.id">
+    //               <td>{{user.id}}</td>
+    //               <td>{{user.username}}</td>
+    //               <td>{{user.birthday}}</td>
+    //               <td>删除 | 更新</td>
+    //             </tr>
+    //         </table>
+    //         </div>
+    //     `,
+    //     data() {
+    //         return {
+    //             users: [
+    //                 {"id": 1, username: "阿波", birthday: "2002-07-14"},
+    //                 {"id": 2, username: "阿飞", birthday: "2003-05-01"},
+    //                 {"id": 3, username: "阿广", birthday: "2001-04-21"},
+    //             ]
+    //         }
+    //     },
+    // }
+    // let first = {
+    //     template: `
+    //         <div>
+    //             组件1
+    //             <router-link to="/second/?id=1&name=jack">去看看组件2</router-link>
+    //         </div>
+    //     `,
+    // }
+    // let second = {
+    //     template: `
+    //         <div>
+    //             组件2 <br>
+    //             这是组件1传来的id：{{$route.query.id}} <br>
+    //             这是组件1传来的name：{{$route.query.name}} <br>
+    //         </div>
+    //     `,
+    // }
+    // let first = {
+    //     template: `
+    //         <div>
+    //             组件1
+    //             <router-link to="/second/1/jack">去看看组件2</router-link>
+    //         </div>
+    //     `,
+    // }
+    // let second = {
+    //     template: `
+    //         <div>
+    //             组件2 <br>
+    //             这是组件1传来的id：{{$route.params.id}} <br>
+    //             这是组件1传来的name：{{$route.params.name}} <br>
+    //         </div>
+    //     `,
+    // }
+    let first = {
+        template: `
+            <div>
+                组件1
+                <button @click="clickMe">去看看组件2</button>
+            </div>
+        `,
+        methods: {
+            clickMe() {
+                // this.$router.push('/second?id=1&name=tom');
+                // this.$router.push('/second/2/mike');
+                this.$router.push({path: '/second/2/mike'});
+            }
+        },
+    }
+    let second = {
+        template: `
+            <div>
+                组件2 <br>
+                这是组件1传来的id：{{$route.query.id}} <br>
+                这是组件1传来的name：{{$route.query.name}} <br>
+                这是组件1传来的id：{{$route.params.id}} <br>
+                这是组件1传来的name：{{$route.params.name}} <br>
+                <button @click="goBack">返回上一页</button>
+            </div>
+        `,
+        methods: {
+            goBack() {
+                this.$router.go(-1);
+                this.$router.push('/');
+            }
+        },
+    }
+    let myRouter = new VueRouter({
+        routes: [
+            // {path: '/one', component: one},
+            // {path: '/two', component: two},
+            // {path: '/', component: one},
+            // {path: '/index', component: in
+            // {path: '/', component: index},
+            {path: '/first', component: first},
+            // {path: '/second', component: second},
+            {path: '/second/:id/:name', component: second},
+            {path: '/', redirect: '/first'},
+        ]
+    })
+    new Vue({
+        el: '#app',
+        data: {},
+        router: myRouter,
+    })
+</script>
+</body>
+</html>
