@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>day6_test</title>
+</head>
+<body>
+<div id="app">
+    <one></one>
+    <hr>
+    <two></two>
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script src="../js/vuex.3.0.1.js"></script>
+<script>
+    let one = {
+        template: `
+            <div>
+                这是第一个组件
+                <button @click="edit">修改</button>
+                <button @click="add">添加</button>
+            </div>
+        `,
+        methods: {
+            edit() {
+                this.$store.commit('editUser', {username: '小飞', password: 666});
+            },
+            add() {
+                this.$store.commit('add_num', 2);
+            },
+        },
+    }
+
+    let two = {
+        template: `
+            <div>
+                这是第二个组件 ---> {{ $store.state.user }}
+                <br>
+                这是第二个组件 ---> {{ $store.getters.result }}
+            </div>
+        `,
+    }
+
+    let myStore = new Vuex.Store({
+        state: {
+            user: {
+                username: '小波',
+                password: 123456,
+            },
+            nums: [31, 67],
+        },
+        mutations: {
+            editUser(state, user) {
+                state.user.username = user.username;
+                state.user.password = user.password;
+            },
+            add_num(state, num) {
+                state.nums.push(num)
+            },
+        },
+        getters: {
+            result(state) {
+                let sum = 0;
+                for (let n of state.nums) {
+                    sum += n;
+                }
+                return sum;
+            },
+        },
+    })
+
+    new Vue({
+        el: '#app',
+        data: {},
+        components: {
+            one: one,
+            two: two,
+        },
+        store: myStore,
+    })
+</script>
+</body>
+</html>
