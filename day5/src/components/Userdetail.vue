@@ -4,7 +4,7 @@
         ID：{{$route.params.id}} <br>
         姓名：{{$route.params.username}} <br>
         年龄：{{$route.params.age}} <br>
-        <button @click="goBack">返回上一页</button>
+        <el-button type="info" round @click="goBack">返回</el-button>
     </div>
 </template>
 

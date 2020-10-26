@@ -1,19 +1,20 @@
 <template>
     <div>
         <h4>留言板</h4>
-        <input type="text" v-model="note">
-        <button @click="addNote">添加留言</button>
+        <el-input size="small" placeholder="请输入内容" suffix-icon="el-icon-date" style="width: auto" v-model="note"></el-input>
+
+        <el-button type="success" round @click="addNote">添加留言</el-button>
 
         <ul>
             <li v-for="(note, index) in notes" :key="index">
                 <span>{{note}}</span>
-                <button @click="remove(index)">删除</button>
+                <el-button type="danger" icon="el-icon-delete" circle @click="remove(index)"></el-button>
             </li>
         </ul>
 
         <span>留言总数量：{{notes.length}}条</span>
         <br><br>
-        <button v-show="flag" @click="remove_all(0, notes.length)">删除所有</button>
+        <el-button type="danger" round v-show="flag" @click="remove_all(0, notes.length)">删除所有</el-button>
     </div>
 </template>
 

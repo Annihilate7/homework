@@ -1,42 +1,78 @@
 <template>
     <div>
         <h4>用户表单</h4>
-        <table border="1">
-            <tr>
-                <td>ID</td>
-                <td>姓名</td>
-                <td>年龄</td>
-                <td>个人信息</td>
-                <td>操作</td>
-            </tr>
-            <tr v-for="(user, index) in users" :key="index">
-                <td>{{user.id}}</td>
-                <td>{{user.username}}</td>
-                <td>{{user.age}}</td>
-                <td>{{user.content}}</td>
-                <td>
-                    <button @click="del_user(index)">删除</button>
-                        |
-                    <router-link :to="`/detail/${user.id}/${user.username}/${user.age}`">查看详情</router-link>
-                </td>
-            </tr>
-        </table>
+        <el-table
+            :data="users"
+            border
+            style="width: 42%">
+            <el-table-column
+                fixed
+                prop="id"
+                label="ID"
+                width="150">
+            </el-table-column>
+            <el-table-column
+                prop="username"
+                label="姓名"
+                width="120">
+            </el-table-column>
+            <el-table-column
+                prop="age"
+                label="年龄"
+                width="120">
+            </el-table-column>
+            <el-table-column
+                prop="content"
+                label="个人信息"
+                width="120">
+            </el-table-column>
+            <el-table-column
+                fixed="right"
+                label="操作"
+                width="100">
+                <template slot-scope="scope">
+                    <el-button @click="del_user(index)" type="text" size="small">删除</el-button>
+<!--                    <el-button type="text" size="small">查看</el-button>-->
+<!--                    <router-link :to="`/detail/${user.id}/${user.username}/${user.age}`">查看</router-link>-->
+                </template>
+            </el-table-column>
+        </el-table>
+<!--        <table border="1">-->
+<!--            <tr>-->
+<!--                <td>ID</td>-->
+<!--                <td>姓名</td>-->
+<!--                <td>年龄</td>-->
+<!--                <td>个人信息</td>-->
+<!--                <td>操作</td>-->
+<!--            </tr>-->
+<!--            <tr v-for="(user, index) in users" :key="index">-->
+<!--                <td>{{user.id}}</td>-->
+<!--                <td>{{user.username}}</td>-->
+<!--                <td>{{user.age}}</td>-->
+<!--                <td>{{user.content}}</td>-->
+<!--                <td>-->
+<!--                    <button @click="del_user(index)">删除</button>-->
+<!--                        |-->
+<!--                    <router-link :to="`/detail/${user.id}/${user.username}/${user.age}`">查看</router-link>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--        </table>-->
         <hr>
         <tr>
             <td>用户名：</td>
-            <td><input type="text" v-model="username"></td>
+            <td><el-input size="small" placeholder="请输入内容" suffix-icon="el-icon-date" style="width: auto" v-model="username"></el-input></td>
         </tr>
         <tr>
             <td>年龄：</td>
-            <td><input type="text" v-model="age"></td>
+            <td><el-input size="small" placeholder="请输入内容" suffix-icon="el-icon-date" style="width: auto" v-model="age"></el-input></td>
         </tr>
         <tr>
             <td>个人信息：</td>
-            <td><input type="text" v-model="content"></td>
+            <td><el-input size="small" placeholder="请输入内容" suffix-icon="el-icon-date" style="width: auto" v-model="content"></el-input></td>
         </tr>
         <tr>
             <td>
-                <button @click="add_user">添加用户</button>
+                <el-button type="success" round @click="add_user">添加用户</el-button>
             </td>
         </tr>
     </div>

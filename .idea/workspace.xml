@@ -32,9 +32,9 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../classcode" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -59,7 +59,8 @@
       <workItem from="1603454070155" duration="395000" />
       <workItem from="1603588401404" duration="52000" />
       <workItem from="1603682372229" duration="8000" />
-      <workItem from="1603700475361" duration="2657000" />
+      <workItem from="1603700475361" duration="2856000" />
+      <workItem from="1603716583461" duration="270000" />
     </task>
     <servers />
   </component>
@@ -75,10 +76,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1603700640974" />
-    <state x="270" y="62" key="SettingsEditor" timestamp="1603454212639">
+    <state x="270" y="62" key="SettingsEditor" timestamp="1603716728814">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="270" y="62" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1603454212639" />
+    <state x="270" y="62" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1603716728814" />
     <state x="425" y="189" key="run.anything.popup" timestamp="1603281810407">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
