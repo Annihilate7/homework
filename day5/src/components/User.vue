@@ -32,32 +32,14 @@
                 width="100">
                 <template slot-scope="scope">
                     <el-button @click="del_user(index)" type="text" size="small">删除</el-button>
-<!--                    <el-button type="text" size="small">查看</el-button>-->
+                    <el-button type="text" size="small" @click="looking(scope.row)">查看</el-button>
 <!--                    <router-link :to="`/detail/${user.id}/${user.username}/${user.age}`">查看</router-link>-->
                 </template>
             </el-table-column>
         </el-table>
-<!--        <table border="1">-->
-<!--            <tr>-->
-<!--                <td>ID</td>-->
-<!--                <td>姓名</td>-->
-<!--                <td>年龄</td>-->
-<!--                <td>个人信息</td>-->
-<!--                <td>操作</td>-->
-<!--            </tr>-->
-<!--            <tr v-for="(user, index) in users" :key="index">-->
-<!--                <td>{{user.id}}</td>-->
-<!--                <td>{{user.username}}</td>-->
-<!--                <td>{{user.age}}</td>-->
-<!--                <td>{{user.content}}</td>-->
-<!--                <td>-->
-<!--                    <button @click="del_user(index)">删除</button>-->
-<!--                        |-->
-<!--                    <router-link :to="`/detail/${user.id}/${user.username}/${user.age}`">查看</router-link>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--        </table>-->
+
         <hr>
+
         <tr>
             <td>用户名：</td>
             <td><el-input size="small" placeholder="请输入内容" suffix-icon="el-icon-date" style="width: auto" v-model="username"></el-input></td>
@@ -83,11 +65,6 @@ export default {
     name: "User",
     data() {
         return {
-            // users: [
-            //     {'id': 1, username: '小波', age: 18, content: '这是小波'},
-            //     {'id': 2, username: '小飞', age: 17, content: '这是小飞'},
-            //     {'id': 3, username: '小广', age: 18, content: '这是小广'},
-            // ],
             users: localStorage.users ? JSON.parse(localStorage.users) : [],
             username: '',
             age: '',
@@ -114,6 +91,9 @@ export default {
                     this.content = '';
                 }
             }
+        },
+        looking(row) {
+            this.$router.push({path: '/detail/'+ row.id + '/' + row.username + '/' + row.age})
         },
         del_user(index) {
             this.users.splice(index, 1);
