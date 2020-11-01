@@ -1,4 +1,4 @@
-from rest_framework import serializers
+from rest_framework import serializers, exceptions
 
 from app.models import Book, User
 
@@ -11,7 +11,7 @@ class UserModelSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'password': {
                 "write_only": True
-            },
+            }
         }
 
 
