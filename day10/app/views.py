@@ -1,6 +1,5 @@
 import re
 
-from django.shortcuts import render
 from rest_framework.generics import GenericAPIView
 from rest_framework import mixins, status
 from rest_framework import viewsets
